@@ -25,20 +25,18 @@ public class Sum4 {
 			return result;
 		}
 		for(int i=0;i<=len-4;i++){
-			handle( nums,i, i+1,i+1 ,target);
+			handle( nums,i,i+1 ,target);
 		}
 		return result;
 	}
 	
-	public static void handle(int[] array,int init,int start,int index,int target){
+	public static void handle(int[] array,int init,int index,int target){
 		int i=0;
 		if(entity.size()==0){
 			entity.add(array[init]);
-			i=index;
-		}else{
-			i=start;
+			
 		}
-		for(;i<array.length;i++){
+		for(i=index;i<array.length;i++){
 			if(entity.size()==4){
 				int b=0;
 				for(int e:entity){
@@ -52,7 +50,7 @@ public class Sum4 {
 				}
 				index++;
 				entity=new ArrayList<>();
-				handle(array, init, start, index, target);
+				handle(array, init, index, target);
 			}else{
 				entity.add(array[i]);
 			}
