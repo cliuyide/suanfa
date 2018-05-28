@@ -1,5 +1,8 @@
 package main.zhangliang.flippingimage;
 
+/**
+ * 翻转图像 https://leetcode-cn.com/problems/flipping-an-image/description/
+ */
 public class FlipAndInvertImage {
 
     public static void main(String[] args) {
@@ -23,6 +26,12 @@ public class FlipAndInvertImage {
         return i ^ 1;
     }
 
+    /**
+     * 82 / 82 个通过测试用例， 执行用时：7 ms， 已经战胜 84.04 % 的 java 提交记录
+     * 
+     * @param A
+     * @return
+     */
     public int[][] flipAndInvertImage(int[][] A) {
         int length = A.length;
         int loop = length / 2;
