@@ -8,7 +8,7 @@ import java.util.Set;
 
 public class Sum4 {
 	public static void main(String[] args) {
-		new Sum4().fourSum(new int[]{1, 0, -1, 0, -2, 2}, 0);
+        new Sum4().fourSum(new int[] { -2, -1, 0, 0, 1, 2 }, 0);
 	}
 	
 	public static Set<String> set=new HashSet<>(); 
@@ -25,19 +25,27 @@ public class Sum4 {
 			return result;
 		}
 		for(int i=0;i<=len-4;i++){
+            entity = new ArrayList<>();
 			handle( nums,i,i+1 ,target);
 		}
 		return result;
 	}
 	
 	public static void handle(int[] array,int init,int index,int target){
+        if (entity.size() == 0 && index + 3 > array.length) {
+            return;
+        }
 		int i=0;
 		if(entity.size()==0){
 			entity.add(array[init]);
 			
 		}
-		for(i=index;i<array.length;i++){
+        for (i = index; i < array.length; i++) {
 			if(entity.size()==4){
+                entity.forEach(item -> {
+                    System.out.print(item);
+                });
+                System.out.println();
 				int b=0;
 				for(int e:entity){
 					b+=e;
@@ -49,7 +57,7 @@ public class Sum4 {
 					}
 				}
 				index++;
-				entity=new ArrayList<>();
+                entity = new ArrayList<>();
 				handle(array, init, index, target);
 			}else{
 				entity.add(array[i]);
