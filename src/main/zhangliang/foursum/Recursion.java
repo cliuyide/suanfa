@@ -18,10 +18,10 @@ public class Recursion {
      * @param result
      *            所有item的集合
      */
-    private static void combinationAndFilter(int[] nums, long target, List<Integer> item, List<List<Integer>> result, Set<String> existed) {
+    private static void combinationAndFilter(int[] nums, int m, long target, List<Integer> item, List<List<Integer>> result, Set<String> existed) {
         for (int i = 0; i < nums.length; i++) {
             item.add(nums[i]);
-            if (item.size() == 4) {
+            if (item.size() == m) {
                 if (nums[i] > target) {
                     item.remove(item.size() - 1);
                     break;
@@ -33,7 +33,7 @@ public class Recursion {
                     }
                 }
             } else {
-                combinationAndFilter(Arrays.copyOfRange(nums, i + 1, nums.length), target - nums[i], item, result, existed);
+                combinationAndFilter(Arrays.copyOfRange(nums, i + 1, nums.length), m, target - nums[i], item, result, existed);
             }
             item.remove(item.size() - 1);
         }
@@ -41,23 +41,31 @@ public class Recursion {
 
     private static List<List<Integer>> fourSum(int[] nums, int target) {
         List<List<Integer>> result = new ArrayList<>();
-        if (nums == null || nums.length < 4) {
+        int m = 4;
+        if (nums == null || nums.length < m) {
             return result;
         }
         Arrays.sort(nums);
         if (target < 0) {
-            long temp = nums[0] + nums[1] + nums[2] + nums[3];
+            long temp = 0;
+            for (int i = 0; i < m; i++) {
+                temp += nums[i];
+            }
             if (temp > target) {
                 return result;
             }
         } else {
             int length = nums.length;
-            long temp = nums[length - 4] + nums[length - 1] + nums[length - 2] + nums[length - 3];
+            long temp = 0;
+            for (int i = 0; i < m; i++) {
+                temp += nums[i];
+                temp += nums[length - i - 1];
+            }
             if (temp < target) {
                 return result;
             }
         }
-        combinationAndFilter(nums, target, new ArrayList<>(), result, new HashSet<>());
+        combinationAndFilter(nums, m, target, new ArrayList<>(), result, new HashSet<>());
         System.out.println(result);
         return result;
     }
