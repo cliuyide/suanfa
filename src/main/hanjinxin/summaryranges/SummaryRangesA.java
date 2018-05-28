@@ -34,6 +34,6 @@ public class SummaryRangesA {
     }
     
     public static void main(String[] args) {
-        System.out.println(SummaryRangesA.summaryRanges(new int[]{0,1,2,4,5,7}));
+        System.out.println(SummaryRangesA.summaryRanges(new int[]{0,1,2,4,5,8}));
     }
 }
