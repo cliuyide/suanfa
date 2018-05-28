@@ -6,22 +6,16 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * 四数之和https://leetcode-cn.com/problems/4sum/description/，递归方式
+ * 
+ */
 public class Recursion {
 
-    /**
-     * @param targetList
-     *            所有的样本的集合
-     * @param m
-     *            从样本集合中选取的样本个数
-     * @param item
-     *            中间变量，m个样本的集合
-     * @param result
-     *            所有item的集合
-     */
-    private static void combinationAndFilter(int[] nums, int m, long target, List<Integer> item, List<List<Integer>> result, Set<String> existed) {
+    private static void selectMFromList(int[] nums, long target, List<Integer> item, List<List<Integer>> result, Set<String> existed) {
         for (int i = 0; i < nums.length; i++) {
             item.add(nums[i]);
-            if (item.size() == m) {
+            if (item.size() == 4) {
                 if (nums[i] > target) {
                     item.remove(item.size() - 1);
                     break;
@@ -33,40 +27,38 @@ public class Recursion {
                     }
                 }
             } else {
-                combinationAndFilter(Arrays.copyOfRange(nums, i + 1, nums.length), m, target - nums[i], item, result, existed);
+                selectMFromList(Arrays.copyOfRange(nums, i + 1, nums.length), target - nums[i], item, result, existed);
             }
             item.remove(item.size() - 1);
         }
     }
 
+    /**
+     * 282 / 282 个通过测试用例, 执行用时：556 ms, 已经战胜 1.34 % 的 java 提交记录
+     * 
+     * @param nums
+     * @param target
+     * @return
+     */
     private static List<List<Integer>> fourSum(int[] nums, int target) {
         List<List<Integer>> result = new ArrayList<>();
-        int m = 4;
-        if (nums == null || nums.length < m) {
+        if (nums == null || nums.length < 4) {
             return result;
         }
         Arrays.sort(nums);
         if (target < 0) {
-            long temp = 0;
-            for (int i = 0; i < m; i++) {
-                temp += nums[i];
-            }
+            long temp = nums[0] + nums[1] + nums[2] + nums[3];
             if (temp > target) {
                 return result;
             }
         } else {
             int length = nums.length;
-            long temp = 0;
-            for (int i = 0; i < m; i++) {
-                temp += nums[i];
-                temp += nums[length - i - 1];
-            }
+            long temp = nums[length - 4] + nums[length - 1] + nums[length - 2] + nums[length - 3];
             if (temp < target) {
                 return result;
             }
         }
-        combinationAndFilter(nums, m, target, new ArrayList<>(), result, new HashSet<>());
-        System.out.println(result);
+        selectMFromList(nums, target, new ArrayList<>(), result, new HashSet<>());
         return result;
     }
 
