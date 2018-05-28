@@ -4,12 +4,21 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * https://leetcode-cn.com/problems/summary-ranges/description/
+ */
 public class SummaryRanges {
 
     public static void main(String[] args) {
         System.out.println(new SummaryRanges().summaryRanges2(new int[] { 0, 2, 3, 4, 6, 8, 9 }));
     }
 
+    /**
+     * 28 / 28 个通过测试用例, 执行用时：0 ms, 已经战胜 100.00 % 的 java 提交记录
+     * 
+     * @param nums
+     * @return
+     */
     public List<String> summaryRanges(int[] nums) {
         List<String> result = new ArrayList<>();
         if (nums == null || nums.length == 0) {
@@ -46,7 +55,7 @@ public class SummaryRanges {
     }
 
     /**
-     * 拆成两个数组效率更低了
+     * 拆成两个数组效率更低了: 28 / 28 个通过测试用例, 执行用时：2 ms, 已经战胜 2.33 % 的 java 提交记录
      * 
      * @param nums
      * @return
