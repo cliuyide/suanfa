@@ -1,7 +1,9 @@
 package main.zhangliang.foursum;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class FourLoops {
@@ -70,7 +72,45 @@ public class FourLoops {
         }
     }
 
+    /**
+     * 282 / 282 个通过测试用例, 执行用时：343 ms, 已经战胜 3.13 % 的 java 提交记录
+     * 
+     * @param nums
+     * @param target
+     * @return
+     */
+    private List<List<Integer>> fourSum(int[] nums, int target) {
+        List<List<Integer>> result = new ArrayList<>();
+        if (nums == null || nums.length < 4) {
+            return result;
+        }
+        Arrays.sort(nums);
+        Set<String> existed = new HashSet<>();
+        for (int i = 0; i < nums.length - 3; i++) {
+            for (int j = i + 1; j < nums.length - 2; j++) {
+                for (int k = j + 1; k < nums.length - 1; k++) {
+                    for (int m = k + 1; m < nums.length; m++) {
+                        if (nums[i] + nums[j] + nums[k] + nums[m] == target) {
+                            if (!existed.contains("" + nums[i] + nums[j] + nums[k] + nums[m])) {
+                                existed.add("" + nums[i] + nums[j] + nums[k] + nums[m]);
+                                List<Integer> list = new ArrayList<>();
+                                list.add(nums[i]);
+                                list.add(nums[j]);
+                                list.add(nums[k]);
+                                list.add(nums[m]);
+                                result.add(list);
+                            }
+                        } else if (nums[i] + nums[j] + nums[k] + nums[m] > target) {
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+        return result;
+
+    }
+
     public static void main(String[] args) {
-        test1();
     }
 }
