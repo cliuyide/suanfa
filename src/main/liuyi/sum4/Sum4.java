@@ -6,6 +6,10 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * 四数之和https://leetcode-cn.com/problems/4sum/description/，递归方式
+ * 
+ */
 public class Sum4 {
 	public static void main(String[] args) {
         new Sum4().fourSum(new int[] {1,0,-1,0,-2,2}, 0);

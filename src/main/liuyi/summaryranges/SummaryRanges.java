@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
+/**
+ * https://leetcode-cn.com/problems/summary-ranges/description/
+ */
 public class SummaryRanges {
 	public static void main(String[] args) {
 		new SummaryRanges().summaryRanges(new int[] { 0, 1, 2, 4, 5, 7 });
