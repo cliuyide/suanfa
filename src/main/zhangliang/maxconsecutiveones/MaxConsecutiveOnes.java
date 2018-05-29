@@ -25,9 +25,6 @@ public class MaxConsecutiveOnes {
         for (int i = 0; i < nums.length; i++) {
             if (nums[i] == 1) {
                 current++;
-                if (nums.length - i == 1 && current > max) {
-                    max = current;
-                }
             } else {
                 if (current > max) {
                     max = current;
@@ -35,7 +32,37 @@ public class MaxConsecutiveOnes {
                 current = 0;
             }
         }
+        if (current > max) {
+            max = current;
+        }
         return max;
     }
 
+    public int findMaxConsecutiveOnes2(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return 0;
+        }
+        if (nums.length == 1) {
+            return nums[0];
+        }
+        int max = 0, current = nums[0];
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] == 1) {
+                current++;
+            } else {
+                if (current > max) {
+                    max = current;
+                }
+                if (i + 1 < nums.length) {
+                    current = nums[++i];
+                } else {
+                    current = 0;
+                }
+            }
+        }
+        if (current > max) {
+            max = current;
+        }
+        return max;
+    }
 }
