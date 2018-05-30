@@ -58,4 +58,23 @@ public class LengthofLastWord {
         }
         return lengthOfLastWord;
     }
+    
+    /**
+     * 59 / 59 test cases passed.Runtime: 5 ms, Your runtime beats 99.92 % of java submissions.
+     * 
+     * @param s
+     * @return
+     */
+    public int lengthOfLastWord3(String s) {
+        if (s == null) {
+            return 0;
+        }
+        s = s.trim();
+        int index = s.lastIndexOf(" ");
+        if (index < 0) {
+            return s.length();
+        } else {
+            return s.length() - index - 1;
+        }
+    }
 }
