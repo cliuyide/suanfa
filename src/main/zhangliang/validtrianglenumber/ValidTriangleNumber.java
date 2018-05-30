@@ -39,4 +39,31 @@ public class ValidTriangleNumber {
         }
         return result;
     }
+
+    /**
+     * 网友解法 ： 220 / 220 个通过测试用例, 执行用时：38 ms, 已经战胜 80.00 % 的 java 提交记录
+     * 
+     * @param nums
+     * @return
+     */
+    public int triangleNumber2(int[] nums) {
+        if (nums == null || nums.length < 3) {
+            return 0;
+        }
+        Arrays.sort(nums);
+        int cnt = 0;
+        for (int i = nums.length - 1; i >= 2; i--) {
+            int l = 0;
+            int r = i - 1;
+            while (l < r) {
+                if (nums[l] + nums[r] > nums[i]) {
+                    cnt += r - l;
+                    r--;
+                } else {
+                    l++;
+                }
+            }
+        }
+        return cnt;
+    }
 }
