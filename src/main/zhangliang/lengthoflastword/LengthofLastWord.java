@@ -58,7 +58,7 @@ public class LengthofLastWord {
         }
         return lengthOfLastWord;
     }
-    
+
     /**
      * 59 / 59 test cases passed.Runtime: 5 ms, Your runtime beats 99.92 % of java submissions.
      * 
@@ -76,5 +76,27 @@ public class LengthofLastWord {
         } else {
             return s.length() - index - 1;
         }
+    }
+
+    /**
+     * 59 / 59 test cases passed.Runtime: 5 ms, Your runtime beats 99.92 % of java submissions.
+     * 
+     * @param s
+     * @return
+     */
+    public int lengthOfLastWord4(String s) {
+        int lengthOfLastWord = 0;
+        if (s == null) {
+            return 0;
+        }
+        s = s.trim();
+        for (int i = s.length() - 1; i >= 0; i--) {
+            if (s.charAt(i) != ' ') {
+                lengthOfLastWord++;
+            } else {
+                break;
+            }
+        }
+        return lengthOfLastWord;
     }
 }
