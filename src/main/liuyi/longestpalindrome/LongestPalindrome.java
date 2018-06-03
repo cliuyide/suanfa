@@ -1,13 +1,12 @@
 package main.liuyi.longestpalindrome;
-
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-
+/**
+ * https://leetcode.com/problems/longest-palindromic-substring/description/
+ * @author liuyi
+ *
+ */
 public class LongestPalindrome {
 	public static void main(String[] args) {
-		System.out.println(new LongestPalindrome().longestPalindrome("aaaa"));
+		System.out.println(new LongestPalindrome().longestPalindrome("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabcaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"));
 	}
 
 	public String longestPalindrome(String s) {
@@ -17,57 +16,36 @@ public class LongestPalindrome {
 		if (s.length() == 1) {
 			return s;
 		}
-		if (s.length() == 2 && s.charAt(0) == s.charAt(1)) {
-			return s;
-		}
-		int length = 0;
-		int startIndex = 0;
-		int endIndex = 0;
-		for (int i = 0; i <= s.length(); i++) {
-			for (int j = 0; j <= i; j++) {
-				if ((i + j) <= s.length()&&(i - j) >=0&&s.charAt(i + j) == s.charAt(i - j)) {
-					int startIndexTemp = i - j;
-					int endIndexTemp = i + j;
-					if ((endIndexTemp - startIndexTemp) > length) {
-						startIndex = startIndexTemp;
-						endIndex = endIndexTemp;
-						length = endIndexTemp - startIndexTemp;
+		int maxLenth=0;
+		String result="";
+//		int time=0;
+		for(int i=0;i<s.length()-1;i++){
+			if(maxLenth<s.length()-i){
+				for(int j=i+1;j<s.length();j++){
+					String chuan=s.substring(i, j+1);
+//					time++;
+//					System.out.println(time+"chuan"+maxLenth);
+					if(chuan.length()>maxLenth&&isHuiwen(chuan)&&chuan.length()>maxLenth){
+						maxLenth=chuan.length();
+						result=chuan;
 					}
-					continue;
 				}
-				if ((i + j) <= s.length()&&s.charAt(i + j) == s.charAt(i)) {
-					int t=j;
-					while (i + t < s.length()) {
-						int startIndexTemp = i;
-						int endIndexTemp = i +t;
-						if ((endIndexTemp - startIndexTemp) > length&&s.charAt(i + t) == s.charAt(i)) {
-							startIndex = startIndexTemp;
-							endIndex = endIndexTemp;
-							length = endIndexTemp - startIndexTemp;
-						}
-						t++;
-					}
-					continue;
-				}
-
-				if ((i - j) >=0&&s.charAt(i - j) == s.charAt(i)) {
-					int t=j;
-					while (t>0&&i - t >= 0) {
-						int startIndexTemp = i - t;
-						int endIndexTemp = i;
-						if ((endIndexTemp - startIndexTemp) > length&&s.charAt(i - t) == s.charAt(i)) {
-							startIndex = startIndexTemp;
-							endIndex = endIndexTemp;
-							length = endIndexTemp - startIndexTemp;
-						}
-						t--;
-					}
-					continue;
-				}
-
-				break;
 			}
 		}
-		return s.substring(startIndex, endIndex + 1);
+		if(maxLenth==0){
+			result=s.substring(0,1);
+		}
+		return result;
+	}
+	
+	private boolean isHuiwen(String params){
+		for(int i=0;i<params.length()/2;i++){
+			if(params.charAt(i)==params.charAt(params.length()-i-1)){
+				continue;
+			}else{
+				return false;
+			}
+		}
+		return true;
 	}
 }
