@@ -12,12 +12,13 @@ public class RotateImageA { // Runtime: 2 ms  Your runtime beats 100.00 % of jav
         }
     }
     
-    public void rotateFourElements(int[][] matrix, int row, int col){ // 旋转四条边上对应的点
+    public void rotateFourElements(int[][] matrix, int row, int col){ // 旋转四条边上对应的点  
         int rotateDistance = matrix.length-1;
         int nexti = col; 
         int nextj = rotateDistance-row; 
         int prevalue = matrix[row][col];
         int currentvalue = matrix[nexti][nextj];
+        // matrix[i][j]旋转90度后对应的点是matrix[j][matrix.length-1-i]
         for(int k=0; k<4; k++){
             currentvalue = matrix[nexti][nextj];
             matrix[nexti][nextj] = prevalue;
