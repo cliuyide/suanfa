@@ -1,5 +1,4 @@
 /**
- * https://leetcode.com/problems/rotate-image/description/
  * @param {number[][]} matrix
  * @return {void} Do not return anything, modify matrix in-place instead.
  */
@@ -15,7 +14,11 @@ var rotate = function(matrix) {
             newArr[i][j] = matrix[point[0] + nowPos][point[1] + nowPos];
         }
     }
-    console.log(newArr);
+    for (var i = 0; i < matrix.length; i++) {
+        for (var j = 0; j < matrix[i].length; j++) {
+            matrix[i][j] = newArr[i][j];
+        }
+    }
 };
 
 var getRotatePoint = function(i, j, n) {
@@ -36,4 +39,4 @@ var getRotatePoint = function(i, j, n) {
     }
 }
 
-rotate([[1, 2, 3, 4, 5], [4, 5, 6, 7, 8], [7, 8, 9, 10, 11], [7, 8, 9, 10, 11], [7, 8, 9, 10, 11]])
+//rotate([[1, 2, 3, 4, 5], [4, 5, 6, 7, 8], [7, 8, 9, 10, 11], [7, 8, 9, 10, 11], [7, 8, 9, 10, 11]])
