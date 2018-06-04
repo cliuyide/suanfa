@@ -1,14 +1,12 @@
 package main.liuyi.flipandinvertimage;
 
-import com.alibaba.fastjson.JSON;
-
 /**
  * 翻转图像 https://leetcode-cn.com/problems/flipping-an-image/description/
  */
 public class FlipAndInvertImage {
-    public static void main(String[] args) {
-        System.out.println(JSON.toJSONString(new FlipAndInvertImage().flipAndInvertImage(new int[][] { { 1, 1, 0 }, { 1, 0, 1 }, { 0, 0, 0 } })));
-    }
+//    public static void main(String[] args) {
+//        System.out.println(JSON.toJSONString(new FlipAndInvertImage().flipAndInvertImage(new int[][] { { 1, 1, 0 }, { 1, 0, 1 }, { 0, 0, 0 } })));
+//    }
     public int[][] flipAndInvertImage(int[][] A) {
         if (A.length == 0) {
             return new int[0][0];
