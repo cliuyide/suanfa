@@ -10,9 +10,7 @@ public class LongestPalindromeSubstring {
 
     public static void main(String[] args) {
         System.out.println(System.currentTimeMillis());
-        System.out
-                .println(new LongestPalindromeSubstring()
-                        .longestPalindrome("ababa"));
+        System.out.println(new LongestPalindromeSubstring().longestPalindrome("caba"));
         System.out.println(System.currentTimeMillis());
     }
 
