@@ -7,10 +7,10 @@ public class IsomorphicStrings {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
-	public boolean isomorphic(String s, String t) {
+	public boolean isIsomorphic(String s, String t) {
 		if (s == null || t == null || s.length() != t.length()) {
 			return false;
 		}
