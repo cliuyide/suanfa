@@ -3,13 +3,22 @@ package main.zhangliang.isomorphicstrings;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * https://leetcode.com/problems/isomorphic-strings/description/
+ */
 public class IsomorphicStrings {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		
+        new IsomorphicStrings().isIsomorphic2("adsf", "asdf");
 	}
 
+    /**
+     * 30 / 30 test cases passed, Runtime: 22 ms, Your runtime beats 51.11 % of java submissions
+     * 
+     * @param s
+     * @param t
+     * @return
+     */
 	public boolean isIsomorphic(String s, String t) {
 		if (s == null || t == null || s.length() != t.length()) {
 			return false;
@@ -36,4 +45,37 @@ public class IsomorphicStrings {
 		}
 		return result;
 	}
+
+    /**
+     * 30 / 30 test cases passed, Runtime: 3 ms, Your runtime beats 99.58 % of java submissions
+     * 
+     * @param s
+     * @param t
+     * @return
+     */
+    public boolean isIsomorphic2(String s, String t) {
+        if (s == null || t == null || s.length() != t.length()) {
+            return false;
+        }
+        boolean result = true;
+        int[] arr1 = new int[255];
+        int[] arr2 = new int[255];
+        char[] sarr = s.toCharArray();
+        char[] tarr = t.toCharArray();
+        for (int i = 0; i < sarr.length; i++) {
+            if (arr1[sarr[i]] == 0) {
+                if (arr2[tarr[i]] == 0) {
+                    arr1[sarr[i]] = tarr[i];
+                    arr2[tarr[i]] = sarr[i];
+                } else {
+                    return false;
+                }
+            } else {
+                if (arr1[sarr[i]] != tarr[i]) {
+                    return false;
+                }
+            }
+        }
+        return result;
+    }
 }
