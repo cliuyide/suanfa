@@ -3,6 +3,9 @@ package main.zhangliang.isomorphicstrings;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * https://leetcode.com/problems/isomorphic-strings/description/
+ */
 public class IsomorphicStrings {
 
 	public static void main(String[] args) {
@@ -10,6 +13,11 @@ public class IsomorphicStrings {
 
 	}
 
+    /**
+     * @param s
+     * @param t
+     * @return
+     */
 	public boolean isomorphic(String s, String t) {
 		if (s == null || t == null || s.length() != t.length()) {
 			return false;
