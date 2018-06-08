@@ -1,13 +1,14 @@
 package main.liuyi.countprimes;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CountPrimes {
 	public static void main(String[] args) {
-		System.out.println(new CountPrimes().countPrimes(499979));
+        System.out.println(new CountPrimes().countPrimes(1500000));
 	}
-	private static Set<Integer> set=new HashSet<>();
+
+    private List<Integer> set = new ArrayList<>();
 	private static int count=0;
 	public int countPrimes(int n) {
         int countPrimes=0;
@@ -27,11 +28,16 @@ public class CountPrimes {
     }
 	
 	private Boolean validPrimes(int n){
+        long half = Math.round(Math.sqrt(n));
 		for(Integer i:set){
 			count++;
-			if(n%i==0||i>=n){
-				return false;
-			}
+            if (n % i == 0) {
+                return false;
+            }
+            if (i >= half) {
+                System.out.println(n);
+                return true;
+            }
 		}
 		return true;
 	}
