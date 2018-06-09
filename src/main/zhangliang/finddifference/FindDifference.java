@@ -63,10 +63,6 @@ public class FindDifference {
 		for (int i = 0; i < s.length(); i++) {
 			sum = sum + arrT[i] - arrS[i];
 		}
-		if (sum == 0) {
-			return arrT[t.length() - 1];
-		} else {
-			return (char) (sum + arrT[t.length() - 1]);
-		}
+		return (char) (sum + arrT[t.length() - 1]);
 	}
 }
