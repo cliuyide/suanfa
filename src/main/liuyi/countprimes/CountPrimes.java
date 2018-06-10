@@ -1,14 +1,18 @@
 package main.liuyi.countprimes;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+
+import com.alibaba.fastjson.JSON;
 
 public class CountPrimes {
 	public static void main(String[] args) {
 		System.out.println(new CountPrimes().countPrimes(499979));
 	}
-	private static Set<Integer> set=new HashSet<>();
-	private static int count=0;
+	private List<Integer> set=new ArrayList<>();
+	private int count=0;
 	public int countPrimes(int n) {
         int countPrimes=0;
         if(n<=2){
@@ -17,12 +21,16 @@ public class CountPrimes {
         countPrimes=1;
         set.add(2);
         for(int i=3;i<n;i=i+2){
+        	if(i%5==0){
+        		continue;
+        	}
         	if(validPrimes(i)){
         		set.add(i);
         		countPrimes++;
         	}
         }
-        System.out.println("count"+count);
+        System.out.println(JSON.toJSONString(set));
+        System.out.println(count);
         return countPrimes;
     }
 	
