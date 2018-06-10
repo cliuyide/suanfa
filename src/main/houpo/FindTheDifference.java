@@ -17,6 +17,17 @@ public class Solution {
 		return ' ';
 	}
 	
+public char findTheDifference2(String s, String t) {
+		char[] ss = s.toCharArray();
+		char[] tt = t.toCharArray();
+		int sum = 0;
+		for (int i = 0; i < ss.length; i++) {
+			sum += ss[i];
+			sum -= tt[i];
+		}
+		sum -= tt[tt.length - 1];
+		return (char) -sum;
+	}
 	
 	public static void main(String[] args) {
 		new Solution().findTheDifference("ab", "abc");
