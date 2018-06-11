@@ -1,18 +1,20 @@
 
 /**
 * https://leetcode.com/problems/subdomain-visit-count/description/
-*/
+You are here! 
+Your runtime beats 100.00 % of javascript submissions. * @param {string[]} cpdomains
+ * @return {string[]}
+ */
 var subdomainVisits = function(cpdomains) {
     var map = {};
     for(var j=0;j<cpdomains.length;j++){
-        var arr = cpdomains[j].split(' ');
-        var count = arr[0] * 1;
-        for(var i=0;i<arr[1].length;i++){
-            if(i==0){
-                map[arr[1]] = (map[arr[1]]?map[arr[1]] + count:count);
-            } else if(arr[1][i] == '.'){
-                var domain = arr[1].substr(i + 1);
-                 map[domain] = (map[domain]?map[domain] + count:count);
+        var index = cpdomains[j].indexOf(' ');
+        var count = cpdomains[j].substring(0, index) * 1;
+        var domainStr = cpdomains[j].substr(index + 1);
+        for(var i=0;i<domainStr.length;i++){
+            if(i==0 || domainStr[i] == '.'){
+                var domain = domainStr.substr(i == 0?0:i+ 1);
+                map[domain] = (map[domain]?map[domain] + count:count);
             }
         }
     }
@@ -22,5 +24,4 @@ var subdomainVisits = function(cpdomains) {
     }
     return reArr;
 };
-
 console.log(subdomainVisits(["900 google.mail.com", "50 yahoo.com", "1 intel.mail.com", "5 wiki.org"]));
