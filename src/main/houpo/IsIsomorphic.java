@@ -1,4 +1,4 @@
-package com.weirhp.test;
+package main.houpo;
 
 public class IsIsomorphic {
 	public boolean isIsomorphic(String s, String t) {

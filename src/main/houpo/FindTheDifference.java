@@ -1,6 +1,6 @@
-package com.weirhp.test;
+package main.houpo;
 
-public class Solution {
+public class FindTheDifference {
 	public char findTheDifference(String s, String t) {
 		char[] ss = s.toCharArray();
 		char[] tt = t.toCharArray();
@@ -30,7 +30,7 @@ public char findTheDifference2(String s, String t) {
 	}
 	
 	public static void main(String[] args) {
-		new Solution().findTheDifference("ab", "abc");
+        new FindTheDifference().findTheDifference("ab", "abc");
 	}
 }
 
