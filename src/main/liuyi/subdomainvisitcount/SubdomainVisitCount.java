@@ -8,10 +8,14 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import com.alibaba.fastjson.JSON;
-
+/**
+ * https://leetcode.com/problems/subdomain-visit-count/description/
+ * @author liuyi
+ *
+ */
 public class SubdomainVisitCount {
     public static void main(String[] args) {
-        System.out.println(JSON.toJSONString(new SubdomainVisitCount().subdomainVisits(new String[] { "9001 discuss.leetcode.com" })));
+        System.out.println(JSON.toJSONString(new SubdomainVisitCount().subdomainVisits(new String[] {"900 google.mail.com", "50 yahoo.com", "1 intel.mail.com", "5 wiki.org"})));
     }
     public List<String> subdomainVisits(String[] cpdomains) {
         Map<String, Integer> map = new HashMap<>();
@@ -22,10 +26,14 @@ public class SubdomainVisitCount {
         for (String item : cpdomains) {
             String[] splitStr = item.split(" ");
             int count = Integer.parseInt(splitStr[0]);
-            String[] domains = splitStr[1].split(",");
-            String domain = null;
+            String[] domains = splitStr[1].trim().split("\\.");
+            String domain = "";
             for (int i = domains.length - 1; i >= 0; i--) {
-                domain = domain + "." + domains[i];
+            	if(domain==""){
+            		domain=domains[i];
+            	}else{
+            		domain = domains[i]+ "."+domain ;
+            	}
                 if (map.get(domain) != null) {
                     map.put(domain, map.get(domain) + count);
                 } else {
