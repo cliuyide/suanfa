@@ -48,8 +48,10 @@ public class SubdomainVisits {
         } else {
             map.put(cpdomain, count + existedCount);
         }
-        while (cpdomain.indexOf(".") >= 0) {
-            cpdomain = cpdomain.substring(cpdomain.indexOf(".") + 1);
+        while (true) {
+            int index = cpdomain.indexOf(".");
+            if (index < 0) break;
+            cpdomain = cpdomain.substring(index + 1);
             existedCount = map.get(cpdomain);
             if (existedCount == null) {
                 map.put(cpdomain, count);
