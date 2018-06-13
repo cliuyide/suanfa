@@ -1,0 +1,11 @@
+1.js排序(侯哥)
+var arr = citations.sort(sequence);
+function sequence(a, b) {
+    if (a > b) {
+        return 1;
+    } else if (a < b) {
+        return -1
+    } else {
+        return 0;
+    }
+}
