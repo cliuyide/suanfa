@@ -49,6 +49,31 @@ public class HIndex {
         return h;
     }
 
+    /**
+     * 如何不用排序搞定？？他人解法，没理解
+     */
+    public int hIndex3(int[] citations) {
+        if (citations == null) {
+            return 0;
+        }
+        int n = citations.length;
+        int[] cnt = new int[n + 1];
+        for (int i = 0; i < n; i++) {
+            int val = citations[i];
+            if (val > n) {
+                cnt[n]++;
+            }else{
+                cnt[val]++;
+            }
+        }
+        int sum = 0;
+        for (int i = n; i >= 0; i--) {
+            sum += cnt[i];
+            if (sum >= i) return i;
+        }
+        return 0;
+    }
+
     public static void main(String[] args) {
         System.out.println(new HIndex().hIndex2(new int[] { 0, 1 }));
     }
