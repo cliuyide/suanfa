@@ -1,4 +1,4 @@
-package main.zhangliang.HIndex;
+package main.zhangliang.hindex;
 
 import java.util.Arrays;
 
