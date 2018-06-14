@@ -1,4 +1,4 @@
-package main.houpo;
+package main.houpo.findTheDifference;
 
 public class FindTheDifference {
 	public char findTheDifference(String s, String t) {

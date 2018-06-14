@@ -1,4 +1,4 @@
-package main.houpo;
+package main.houpo.IsIsomorphic;
 
 public class IsIsomorphic {
 	public boolean isIsomorphic(String s, String t) {
