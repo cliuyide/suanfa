@@ -2,6 +2,9 @@ package main.zhangliang.hindex;
 
 import java.util.Arrays;
 
+/**
+ * https://leetcode.com/problems/h-index/description/
+ */
 public class HIndex {
     /**
      * 82 / 82 test cases passed,Runtime: 9 ms, Your runtime beats 5.60 % of java submissions
