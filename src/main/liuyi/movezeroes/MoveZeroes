@@ -1,0 +1,23 @@
+package main.liuyi.movezeroes;
+/**
+ * https://leetcode.com/problems/move-zeroes/
+ * @author liuyi
+ *
+ */
+public class MoveZeroes {
+	public static void main(String[] args) {
+		new MoveZeroes().moveZeroes(new int[]{0,1,0,3,12});
+	}
+	public void moveZeroes(int[] nums) {
+        for(int i=nums.length-2;i>=0;i--){
+        	if(nums[i]!=0){
+        		continue;
+        	}
+        	for(int j=i;j<nums.length-1;j++){
+        		nums[j]=nums[j+1];
+        		nums[j+1]=0;
+        	}
+        }
+        System.out.println(1);
+    }
+}
