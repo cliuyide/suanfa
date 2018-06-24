@@ -5,7 +5,12 @@ import java.util.Arrays;
 import java.util.List;
 
 import com.alibaba.fastjson.JSON;
-
+/**
+ * TODO 
+ * https://leetcode.com/problems/partition-to-k-equal-sum-subsets/description/
+ * @author liuyi
+ *
+ */
 public class PartitionToKEqualSumSubsets {
 	public static void main(String[] args) {
 		System.out.println(new PartitionToKEqualSumSubsets().canPartitionKSubsets(new int[]{4,15,1,1,1,1,3,11,1,10}, 3));
@@ -56,33 +61,18 @@ public class PartitionToKEqualSumSubsets {
         		list.remove(i);
         	}
         }
-//        k=k-equalsAvgCount;
-//        while(k>0&&list.size()>0){
-//        	int temp=avg;
-//        	int i=0;
-//        	while(temp>0&&i<list.size()){
-//        		temp-=list.get(i);
-//        		System.out.println(JSON.toJSONString(list));
-//        		if(temp==0){
-//        			list.remove(i);
-//        			k--;
-//        		}else if(temp>0){
-//        			list.remove(i);
-//            		int tem=list.indexOf(temp);
-//            		if(tem!=-1){
-//            			temp-=list.get(tem);
-//            			list.remove(tem);
-//            			k--;
-//            		}
-//        		}else{
-//        			return result;
-//        		}
-//        		
-//        	}
-//        }
-//        if(k>0||list.size()>0){
-//        	return result;
-//        }
+        k=k-equalsAvgCount;
+        while(k>0&&list.size()>0){
+        	int temp=avg;
+        	int i=0;
+        	while(temp>0&&i<list.size()){
+        		
+        		
+        	}
+        }
+        if(k>0||list.size()>0){
+        	return result;
+        }
         result=true;
         return result;
     }
