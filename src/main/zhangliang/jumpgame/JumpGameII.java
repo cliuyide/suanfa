@@ -52,7 +52,8 @@ public class JumpGameII {
 			}
 		}
 		if (max > end) {
-			return new int[] { min, max };
+			// return new int[] { min, max }; // 这种方式执行 224 ms
+			return new int[] { end > min ? end : min, max };// 这种方式执行结果10ms,效率明显提升
 		} else {
 			return null;
 		}
