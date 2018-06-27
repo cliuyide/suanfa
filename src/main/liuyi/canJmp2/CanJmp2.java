@@ -38,20 +38,16 @@ public class CanJmp2 {
 			}else if(theStepNum<result){
 				result=theStepNum;
 			}
-		}
-		if(index>arrLength){
 			System.out.println("一共用了"+result+"步");
 			return result;
 		}
 		//循环开始
-		
 		for(int i=1;i<=nextStep;i++){
 			if(i+index<arrLength){
 				int item=array[i+index];
 				result=handle(index+i,theStepNum+1,item,arrLength,array,result);
 			}
 		}
-		
 		return result;
 	}
 }
