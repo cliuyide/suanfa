@@ -46,4 +46,42 @@ public class SellStockIII {
         }
         return profit;
     }
+
+    /**
+     * 网友解法, 没看懂
+     * 
+     * @param prices
+     * @return
+     */
+    public int maxProfitCopy(int[] prices) {
+        if (prices == null || prices.length <= 1) {
+            return 0;
+        }
+        int n = prices.length;
+        int[] first = new int[n];
+        int[] second = new int[n];
+
+        int fmin = prices[0];
+        int fmax = 0;
+        int emin = 0;
+        int emax = 0;
+
+        for (int i = 0; i < n; i++) {
+            int p1 = prices[i];
+            int p2 = prices[n - 1 - i];
+
+            fmin = Math.min(p1, fmin);
+            fmax = Math.max(fmax, p1 - fmin);
+            first[i] = fmax;
+
+            emax = Math.max(p2, emax);
+            emin = Math.max(emax - p2, emin);
+            second[n - 1 - i] = emin;
+        }
+        int res = 0;
+        for (int i = 0; i < n; i++) {
+            res = Math.max(res, first[i] + second[i]);
+        }
+        return res;
+    }
 }
