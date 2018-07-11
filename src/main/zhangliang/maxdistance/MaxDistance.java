@@ -24,7 +24,7 @@ public class MaxDistance {
                 }
             }
         }
-        // 已0结尾
+        // 以0结尾
         int end = seats.length - 1;
         if (seats[seats.length - 1] == 0) {
             for (int i = end - 1; i >= 0; i--) {
