@@ -15,26 +15,20 @@ public class MaxDistance {
         int distance = 0;
         int start = 0;
         // 数组以0开头
-        if (seats[0] == 0) {
-            for (int i = 0; i < seats.length; i++) {
-                if (seats[i] == 1) {
-                    distance = i - start;
-                    start = i;
-                    break;
-                }
+        for (; start < seats.length; start++) {
+            if (seats[start] == 1) {
+                distance = start;
+                break;
             }
         }
         // 以0结尾
         int end = seats.length - 1;
-        if (seats[seats.length - 1] == 0) {
-            for (int i = end - 1; i >= 0; i--) {
-                if (seats[i] == 1) {
-                    if (end - i > distance) {
-                        distance = end - i;
-                    }
-                    end = i;
-                    break;
+        for (; end >= 0; end--) {
+            if (seats[end] == 1) {
+                if (seats.length - end - 1 > distance) {
+                    distance = seats.length - end - 1;
                 }
+                break;
             }
         }
         // 和连续1的个数算法一样
