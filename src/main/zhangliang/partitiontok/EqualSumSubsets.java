@@ -22,7 +22,7 @@ public class EqualSumSubsets {
 	public boolean canPartitionKSubsets(int[] nums, int k) {
 		if (nums == null) {
 			return false;
-		}
+		} 
 		if (k > nums.length) {
 			return false;
 		} else if (nums.length == 1 && k == 1) {
