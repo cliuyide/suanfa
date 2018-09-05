@@ -1,36 +1,28 @@
 package main.liuyi.convertsortedarraytobinarysearchtree;
 
+/**
+ * 108 TODO 没做出来
+ * 
+ * @author liuyi
+ *
+ */
 public class ConvertSortedArrayToBinarySearchTree {
 	public TreeNode sortedArrayToBST(int[] nums) {
-		if (nums.length == 0) {
+		if (nums == null || nums.length == 0)
 			return null;
-		}
-		if (nums.length == 1) {
-			return new TreeNode(nums[0]);
-		}
-		int halfLength = nums.length / 2;
-		while(halfLength>0){
-			
-		}
-		TreeNode result = new TreeNode(nums[halfLength]);
-		return result;
+		return getTree(nums, 0, nums.length - 1);
 	}
 
-	private void handler(int start, int end, boolean isLeft, int[] nums, TreeNode result) {
-		if (end - start == 0) {
-
-		}
-		int halfNum = (end - start)/2;
-		if (isLeft) {
-			result.left = new TreeNode(nums[halfNum + start]);
-			handler(start, halfNum, true, nums, result.left);
-			handler(halfNum, end, false, nums, result.left);
+	public TreeNode getTree(int[] nums, int l, int r) {
+		if (l <= r) {
+			int mid = (l + r) / 2;
+			TreeNode node = new TreeNode(nums[mid]);
+			node.left = getTree(nums, l, mid - 1);
+			node.right = getTree(nums, mid + 1, r);
+			return node;
 		} else {
-			result.right = new TreeNode(nums[halfNum + start]);
-			handler(start, halfNum, true, nums, result.right);
-			handler(halfNum, end, false, nums, result.right);
+			return null;
 		}
-
 	}
 
 	public static class TreeNode {
