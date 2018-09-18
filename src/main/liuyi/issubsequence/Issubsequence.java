@@ -1,5 +1,11 @@
 package main.liuyi.issubsequence;
 
+/**
+ * https://leetcode-cn.com/problems/is-subsequence/description/
+ * 
+ * @author liuyi
+ *
+ */
 public class Issubsequence {
 	public static void main(String[] args) {
 		System.out.println(new Issubsequence().isSubsequence("leeeeetcode",
